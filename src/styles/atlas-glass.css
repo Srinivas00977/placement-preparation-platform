@@ -1,0 +1,175 @@
+.gd-app {
+  --gd-ink: #25201e;
+  --gd-muted: #423731;
+  --gd-line: rgb(74 49 33 / 15%);
+  --gd-rim: rgb(255 253 246 / 51%);
+  --gd-edge-light: rgb(255 254 247 / 84%);
+  --gd-edge-shade: rgb(57 40 28 / 19%);
+  --gd-gloss: rgb(255 251 242 / 45%);
+  --gd-frame: rgb(247 234 219 / 23%);
+  --gd-rail: rgb(241 222 206 / 48%);
+  --gd-card: rgb(250 242 232 / 46%);
+  --gd-card-light: rgb(255 251 245 / 34%);
+  --gd-raised: rgb(255 249 243 / 81%);
+  --gd-inner: rgb(255 250 245 / 37%);
+  --gd-surface: #f6ece2;
+  --gd-track: rgb(81 49 32 / 14%);
+  --gd-primary: #261e1b;
+  --gd-primary-ink: #fffaf5;
+  --gd-pick: #fff9f3;
+  --gd-pick-ink: #241b17;
+  --gd-coral: #a43c27;
+  --gd-teal: #09644f;
+  --gd-ochre: #996300;
+  --gd-dark-shadow: 35 21 14;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  width: 100%;
+  background: #ab8e76;
+  color: var(--gd-ink);
+  font-family: "Manrope Variable", Manrope, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.gd-app[data-theme="dark"] {
+  --gd-ink: #fff6e9;
+  --gd-muted: #e5d5c7;
+  --gd-line: rgb(243 221 198 / 19%);
+  --gd-rim: rgb(255 236 212 / 31%);
+  --gd-edge-light: rgb(255 242 225 / 49%);
+  --gd-edge-shade: rgb(11 6 5 / 30%);
+  --gd-gloss: rgb(255 237 213 / 13%);
+  --gd-frame: rgb(42 31 29 / 52%);
+  --gd-rail: rgb(45 32 30 / 59%);
+  --gd-card: rgb(47 36 34 / 53%);
+  --gd-card-light: rgb(106 88 81 / 30%);
+  --gd-raised: rgb(80 67 61 / 82%);
+  --gd-inner: rgb(78 61 56 / 49%);
+  --gd-surface: #3b302c;
+  --gd-track: rgb(245 226 212 / 16%);
+  --gd-primary: #f3ddca;
+  --gd-primary-ink: #231a16;
+  --gd-pick: #f9eee0;
+  --gd-pick-ink: #ffffff;
+  --gd-coral: #ff9177;
+  --gd-teal: #75dac0;
+  --gd-ochre: #f1be58;
+  --gd-dark-shadow: 10 4 3;
+
+  background: #40322b;
+  color-scheme: dark;
+}
+
+.gd-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  pointer-events: none;
+  filter: sepia(0.22) saturate(0.78) brightness(0.86);
+  animation: gd-bg-drift 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.gd-app[data-theme="dark"] .gd-background {
+  filter: sepia(0.15) saturate(0.75) brightness(0.61);
+}
+
+.gd-bg-tint {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(116deg, rgb(73 48 37 / 35%), transparent 43%, rgb(162 101 63 / 24%) 76%, transparent 100%),
+    linear-gradient(0deg, rgb(53 33 25 / 34%), transparent 58%);
+}
+
+@keyframes gd-bg-drift {
+  0% { transform: scale(1.03) translate3d(0, 0, 0); }
+  100% { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+}
+
+.gd-top, .gd-dock, .gd-glass-rail {
+  border: 1px solid var(--gd-rim);
+  background: linear-gradient(165deg, var(--gd-gloss), transparent 32% 73%, var(--gd-gloss)), var(--gd-rail);
+  box-shadow:
+    inset 1px 1px 1px var(--gd-edge-light),
+    inset -1px -1px 1px var(--gd-edge-shade),
+    inset 0 -2px 5px var(--gd-gloss),
+    0 7px 20px rgb(var(--gd-dark-shadow) / 17%);
+  backdrop-filter: blur(15px) saturate(1.35);
+  -webkit-backdrop-filter: blur(15px) saturate(1.35);
+}
+
+.gd-stage {
+  color: var(--gd-ink);
+  border: 1px solid var(--gd-rim);
+  border-radius: 34px;
+  background:
+    linear-gradient(148deg, var(--gd-gloss), transparent 19% 77%, color-mix(in srgb, var(--gd-gloss) 48%, transparent)),
+    var(--gd-frame);
+  box-shadow:
+    inset 1px 1px 1px var(--gd-edge-light),
+    inset -1px -1px 1px var(--gd-edge-shade),
+    inset 0 0 7px var(--gd-gloss),
+    0 1px 3px rgb(var(--gd-dark-shadow) / 17%),
+    0 22px 72px rgb(var(--gd-dark-shadow) / 22%);
+  backdrop-filter: blur(12px) saturate(1.24);
+  -webkit-backdrop-filter: blur(12px) saturate(1.24);
+}
+
+.gd-panel, .gd-metric {
+  border: 1px solid var(--gd-rim);
+  border-radius: 20px;
+  background: linear-gradient(144deg, var(--gd-card-light), transparent 66%), var(--gd-card);
+  box-shadow:
+    inset 0 1px 1px var(--gd-edge-light),
+    inset 0 -1px 1px var(--gd-edge-shade),
+    0 6px 18px rgb(var(--gd-dark-shadow) / 9%);
+  color: var(--gd-ink);
+}
+
+.gd-metric-teal {
+  color: #ffffff !important;
+  border: 1px solid rgb(196 248 231 / 55%);
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 5% -20%, #3a9381, transparent 68%),
+    linear-gradient(145deg, #1e7461, #08443a);
+  box-shadow:
+    inset 0 1px 2px rgb(214 252 240 / 45%),
+    0 6px 14px rgb(19 78 64 / 17%);
+}
+
+.gd-orb {
+  flex: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 32% 24%, #faf7fe 5%, #72ecf1 25%, transparent 58%),
+    radial-gradient(ellipse at 67% 54%, #e1b7f9, #815add 55%, #353467 79%);
+  box-shadow:
+    inset 0 0 0 0.75px rgb(246 245 255 / 75%),
+    inset 0 -2px 5px #604db4,
+    0 0 0 3px rgb(91 70 115 / 13%),
+    0 2px 8px rgb(71 46 113 / 35%);
+}
+
+.gd-prompt {
+  animation: gd-prompt-in 0.74s steps(28, end) both;
+}
+
+@keyframes gd-prompt-in {
+  from { clip-path: inset(0 100% 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gd-background, .gd-prompt { animation: none !important; }
+}

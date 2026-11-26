@@ -1,0 +1,227 @@
+@import "@fontsource-variable/manrope";
+@import "./styles/atlas-glass.css";
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --radius: 0.75rem;
+  }
+
+  body {
+    background-color: #030303;
+    color: #f4f4f5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #060608;
+}
+::-webkit-scrollbar-thumb {
+  background: #222226;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34343a;
+}
+
+/* Glassmorphism & Subtle Glow Utilities */
+.glass-panel {
+  background: rgba(10, 10, 14, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(16, 185, 129, 0.12);
+  transform: translateY(-2px);
+}
+
+.glow-border {
+  box-shadow: 0 0 40px -10px rgba(255, 255, 255, 0.05);
+}
+
+.glow-subtle {
+  box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.04);
+}
+
+/* Ambient AI Aurora Keyframes */
+@keyframes aurora-drift-1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(50px, 35px) scale(1.08);
+  }
+  100% {
+    transform: translate(-35px, 60px) scale(0.96);
+  }
+}
+
+@keyframes aurora-drift-2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-45px, -50px) scale(1.1);
+  }
+  100% {
+    transform: translate(35px, -25px) scale(0.94);
+  }
+}
+
+@keyframes aurora-drift-3 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-35px, 45px) scale(1.06);
+  }
+  100% {
+    transform: translate(45px, -35px) scale(0.97);
+  }
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* SPATIAL GLASSY DASHBOARD (ATLAS-INSPIRED) DESIGN SYSTEM */
+
+.frosted-glass-stage {
+  border-radius: 30px;
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  background: rgba(10, 14, 13, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.22), inset -1px -1px 1px rgba(0, 0, 0, 0.35), 0 22px 70px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .frosted-glass-stage {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.95), inset -1px -1px 1px rgba(0, 0, 0, 0.05), 0 22px 60px rgba(0, 0, 0, 0.08);
+}
+
+.floating-pill-header {
+  border-radius: 9999px;
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  background: rgba(12, 16, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22), 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .floating-pill-header {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.floating-glass-sidebar {
+  border-radius: 28px;
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  background: rgba(10, 14, 13, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.2), 0 18px 50px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .floating-glass-sidebar {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.9), 0 14px 35px rgba(0, 0, 0, 0.06);
+}
+
+.hero-teal-card {
+  background: radial-gradient(ellipse at 5% -20%, #3a9381, transparent 68%), linear-gradient(145deg, #1e7461, #08443a);
+  border: 1px solid rgba(94, 234, 212, 0.32);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 16px 40px -10px rgba(8, 68, 58, 0.65);
+}
+
+.frosted-inner-card {
+  background: rgba(16, 22, 20, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="light"] .frosted-inner-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+@keyframes orb-pulse-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: hue-rotate(0deg) drop-shadow(0 0 8px rgba(6, 182, 212, 0.65));
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    filter: hue-rotate(35deg) drop-shadow(0 0 14px rgba(16, 185, 129, 0.75));
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: hue-rotate(0deg) drop-shadow(0 0 8px rgba(6, 182, 212, 0.65));
+  }
+}
+
+.ai-orb-sphere {
+  background: radial-gradient(circle at 30% 30%, #a7f3d0 0%, #06b6d4 35%, #10b981 65%, #6366f1 98%);
+  animation: orb-pulse-rotate 9s infinite linear;
+}
+
+[data-theme="light"] body {
+  background-color: #f1f4f3;
+  color: #18181b;
+}
+
+[data-theme="light"] .text-neutral-400 {
+  color: #71717a !important;
+}
+
+[data-theme="light"] .text-white {
+  color: #09090b !important;
+}
